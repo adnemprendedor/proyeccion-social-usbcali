@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prácticas Profesionales — Proyección Social USB Cali</title>
+<title>Ruta de Prácticas 2026-2 — Estudiantes USB Cali</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 
@@ -450,124 +450,195 @@
   .rp-light .rp-noscript{ color:var(--ink-500); }
   @media (max-width:600px){ .rp-light{ padding:64px 0; } }
 
-  /* ---------- ruta de prácticas 2026-2 (mapa + zoom por paso) ---------- */
-  .rt-tabs{ display:flex; justify-content:center; gap:6px; margin:0 auto 34px auto; padding:5px; width:max-content; max-width:100%; background:var(--cream-100); border:1px solid var(--line-dark); border-radius:999px; }
+
+  /* ---------- ruta de prácticas 2026-2: camino interactivo ---------- */
+  .rt-tabs{ display:flex; justify-content:center; gap:6px; margin:0 auto 30px auto; padding:5px; width:max-content; max-width:100%; background:var(--cream-100); border:1px solid var(--line-dark); border-radius:999px; }
   .rt-tab{ font:inherit; display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600; color:var(--ink-500); background:transparent; border:none; border-radius:999px; padding:11px 20px; cursor:pointer; transition:background .25s ease, color .25s ease; }
   .rt-tab:hover{ color:var(--navy-950); }
   .rt-tab.active{ background:var(--navy-950); color:#fff; }
-  .rt-tab:focus-visible, .rt-step:focus-visible, .rt-btn:focus-visible, .rt-dot:focus-visible, .rt-check:focus-within{ outline:3px solid var(--accent); outline-offset:2px; }
+  .rt-tab:focus-visible, .rt-node:focus-visible, .rt-btn:focus-visible, .rt-dot:focus-visible, .rt-x:focus-visible, .rt-link:focus-visible, .rt-check:focus-within{ outline:3px solid var(--accent); outline-offset:3px; }
 
-  .rt{ max-width:1080px; margin:0 auto; }
-  .rt-view{ animation:rt-in .45s cubic-bezier(.16,.8,.3,1); }
-  @keyframes rt-in{ from{ opacity:0; transform:scale(.97) translateY(10px); } }
-  .rt-zoom-in{ animation:rt-zoom .5s cubic-bezier(.16,.8,.3,1); transform-origin:var(--ox,50%) var(--oy,0%); }
-  @keyframes rt-zoom{ from{ opacity:0; transform:scale(.86); } }
+  .rt{ max-width:1100px; margin:0 auto; }
 
-  /* map */
-  .rt-stage{ position:relative; padding-left:64px; }
-  .rt-stage::before{ content:""; position:absolute; left:23px; top:56px; bottom:-8px; width:2px; background:repeating-linear-gradient(to bottom, var(--accent-border) 0 6px, transparent 6px 12px); }
-  .rt-stage:last-of-type::before{ bottom:40px; }
-  .rt-stage-head{ position:relative; display:flex; align-items:center; gap:14px; min-height:48px; }
-  .rt-stage-badge{ position:absolute; left:-64px; top:0; width:48px; height:48px; border-radius:14px; background:var(--navy-950); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1; box-shadow:0 10px 22px -12px rgba(10,21,38,0.6); }
-  .rt-stage-badge small{ font-size:8.5px; letter-spacing:0.14em; color:var(--gold-400); margin-bottom:3px; }
-  .rt-stage-badge b{ font-size:19px; }
-  .rt-stage-head h3{ font-size:clamp(20px,2.3vw,25px); color:var(--navy-950); }
-  .rt-stage-head .mono{ font-size:11.5px; color:var(--ink-500); letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; }
-  .rt-steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px; }
-  .rt-steps.four{ grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .rt-step{ position:relative; font:inherit; text-align:left; display:flex; flex-direction:column; gap:8px; background:#fff; border:1.5px solid var(--line-dark); border-radius:18px; padding:18px 18px 16px 18px; cursor:pointer; color:var(--ink-800); transition:transform .25s ease, border-color .25s ease, box-shadow .3s ease; min-height:150px; }
-  .rt-step:hover{ transform:translateY(-4px); border-color:var(--accent-border); box-shadow:0 22px 40px -24px rgba(10,21,38,0.35); }
-  .rt-step-top{ display:flex; align-items:center; justify-content:space-between; }
-  .rt-step-num{ width:36px; height:36px; border-radius:50%; background:var(--accent); color:#0A1526; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
-  .rt-step-zoom{ width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink-500); background:var(--cream-100); transition:all .25s ease; }
-  .rt-step:hover .rt-step-zoom{ background:var(--navy-950); color:#fff; transform:scale(1.08); }
-  .rt-step h4{ font-size:15.5px; line-height:1.35; color:var(--navy-950); font-weight:700; }
-  .rt-step p{ font-size:13.5px; line-height:1.5; color:var(--ink-500); margin:0; }
-  .rt-step-more{ margin-top:auto; padding-top:6px; font-size:12.5px; font-weight:700; color:#C4610C; }
-  .rt-end{ display:inline-flex; align-items:center; gap:10px; margin:22px 0 40px 0; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#2E7D57; background:#EEF8F2; border:1px solid rgba(46,158,106,0.3); padding:8px 14px; border-radius:999px; }
-  .rt-contact{ margin:8px 0 0 64px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; background:var(--navy-950); color:rgba(255,255,255,0.72); border-radius:20px; padding:24px 28px; font-size:14.5px; line-height:1.6; }
-  .rt-contact strong{ color:#fff; display:block; font-size:16px; }
-  .rt-contact a{ color:var(--gold-400); font-weight:600; word-break:break-word; }
-  .rt-contact-ico{ flex:0 0 48px; height:48px; border-radius:14px; background:rgba(242,129,28,0.14); border:1px solid var(--accent-border); color:var(--accent); display:flex; align-items:center; justify-content:center; }
+  /* resumen de avance */
+  .rt-summary{ display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:22px; background:var(--navy-950); color:#fff; border-radius:22px; padding:20px 24px; margin-bottom:26px; position:relative; overflow:hidden; }
+  .rt-summary::after{ content:""; position:absolute; right:-60px; top:-80px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(242,129,28,0.28), transparent 70%); pointer-events:none; }
+  .rt-ring{ position:relative; width:64px; height:64px; flex-shrink:0; }
+  .rt-ring svg{ width:64px; height:64px; transform:rotate(-90deg); }
+  .rt-ring circle{ fill:none; stroke-width:6; }
+  .rt-ring .bg{ stroke:rgba(255,255,255,0.12); }
+  .rt-ring .fg{ stroke:var(--accent); stroke-linecap:round; transition:stroke-dashoffset .8s cubic-bezier(.16,.8,.3,1); }
+  .rt-ring b{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:15px; font-family:'IBM Plex Mono', ui-monospace, monospace; }
+  .rt-sum-text h3{ font-size:19px; color:#fff; }
+  .rt-sum-text p{ margin:4px 0 0 0; font-size:14.5px; color:rgba(255,255,255,0.68); line-height:1.5; }
+  .rt-sum-text p button{ font:inherit; color:var(--gold-400); font-weight:700; background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+  .rt-sum-actions{ position:relative; z-index:1; display:flex; gap:10px; align-items:center; }
+  .rt-link{ font:inherit; font-size:13px; color:rgba(255,255,255,0.55); background:none; border:none; cursor:pointer; padding:6px; text-decoration:underline; text-underline-offset:3px; }
+  .rt-link:hover{ color:#fff; }
 
-  /* zoom (detail) */
-  .rt-detail{ background:#fff; border:1px solid var(--line-dark); border-radius:26px; box-shadow:0 30px 60px -40px rgba(10,21,38,0.4); overflow:hidden; }
-  .rt-detail-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:16px 22px; background:var(--cream-100); border-bottom:1px solid var(--line-dark); }
-  .rt-crumbs{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; color:var(--ink-500); }
-  .rt-crumbs button{ font:inherit; font-weight:600; color:var(--navy-950); background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
-  .rt-dots{ display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
-  .rt-dots .sep{ width:10px; }
-  .rt-dot{ font:inherit; width:26px; height:26px; border-radius:50%; border:1.5px solid rgba(10,21,38,0.16); background:#fff; color:var(--ink-500); font-size:10.5px; font-weight:700; cursor:pointer; padding:0; transition:all .2s ease; }
-  .rt-dot:hover{ border-color:var(--accent); color:var(--navy-950); }
-  .rt-dot.on{ background:var(--navy-950); border-color:var(--navy-950); color:#fff; }
-  .rt-detail-body{ display:grid; grid-template-columns:200px minmax(0,1fr); gap:34px; padding:38px 40px 34px 40px; }
-  .rt-big{ font-size:96px; line-height:.9; font-weight:800; color:var(--accent); letter-spacing:-0.04em; }
-  .rt-side .rt-tag{ display:inline-block; margin-top:14px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:#C4610C; background:var(--accent-soft); border:1px solid var(--accent-border); padding:6px 11px; border-radius:999px; }
-  .rt-side p{ font-size:13px; color:var(--ink-500); margin:12px 0 0 0; line-height:1.5; }
-  .rt-main h3{ font-size:clamp(23px,2.8vw,32px); line-height:1.2; color:var(--navy-950); }
-  .rt-main h3:focus{ outline:none; }
-  .rt-lead{ font-size:17px; line-height:1.7; color:#3E4759; margin:14px 0 0 0; }
-  .rt-block{ margin-top:24px; }
-  .rt-block h5{ font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-500); margin:0 0 10px 0; font-family:'IBM Plex Mono', ui-monospace, monospace; font-weight:600; }
+  /* mapa */
+  .rt-map{ position:relative; padding:6px 0 10px 0; }
+  .rt-road{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; z-index:0; }
+  .rt-road path{ fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .rt-road .base{ stroke:#EDE6D6; stroke-width:22; }
+  .rt-road .lane{ stroke:#fff; stroke-width:2.5; stroke-dasharray:10 12; }
+  .rt-road .done{ stroke:var(--accent); stroke-width:22; transition:stroke-dashoffset .9s cubic-bezier(.16,.8,.3,1); }
+  .rt-row{ position:relative; z-index:1; }
+  .rt-row + .rt-row{ margin-top:34px; }
+  .rt-row-head{ display:flex; align-items:baseline; justify-content:center; gap:12px; flex-wrap:wrap; padding:0 170px; text-align:center; }
+  .rt-row-head h3{ font-size:clamp(19px,2.1vw,23px); color:var(--navy-950); }
+  .rt-row-head h3 span{ color:#C4610C; }
+  .rt-row-count{ font-size:13px; font-weight:600; color:var(--ink-500); background:#fff; border:1px solid var(--line-dark); padding:4px 10px; border-radius:999px; transition:all .3s ease; }
+  .rt-row.complete .rt-row-count{ color:#1D6B47; background:#EEF8F2; border-color:rgba(46,158,106,0.35); }
+  .rt-nodes{ list-style:none; margin:18px 0 0 0; padding:0 56px; display:flex; justify-content:space-between; align-items:flex-start; }
+  .rt-row.rev .rt-nodes{ flex-direction:row-reverse; }
+  .rt-nodes li{ width:120px; display:flex; justify-content:center; }
+
+  .rt-node{ font:inherit; position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; background:none; border:none; padding:0; cursor:pointer; color:var(--navy-950); width:120px; text-align:center; border-radius:16px; }
+  .rt-dot{ position:relative; width:68px; height:68px; border-radius:50%; background:#fff; border:2.5px solid var(--navy-950); display:flex; align-items:center; justify-content:center; color:var(--navy-950); box-shadow:0 0 0 6px #fff, 0 14px 26px -14px rgba(10,21,38,0.55); transition:transform .3s cubic-bezier(.3,1.6,.5,1), background .3s ease, border-color .3s ease, color .3s ease; }
+  .rt-node:hover .rt-dot{ transform:translateY(-5px) scale(1.07); }
+  .rt-num{ position:absolute; top:-6px; right:-8px; min-width:26px; height:26px; padding:0 6px; border-radius:999px; background:var(--navy-950); color:#fff; font-size:11.5px; font-weight:700; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', ui-monospace, monospace; border:2px solid #fff; transition:background .3s ease; }
+  .rt-label{ font-size:13.5px; font-weight:700; line-height:1.3; }
+  .rt-node.done .rt-dot{ background:var(--accent); border-color:var(--accent); color:#0A1526; }
+  .rt-node.done .rt-num{ background:#2E9E6A; }
+  .rt-node.next .rt-dot{ animation:rt-beacon 2s ease-in-out infinite; }
+  @keyframes rt-beacon{ 0%,100%{ box-shadow:0 0 0 6px #fff, 0 0 0 10px rgba(242,129,28,0.0), 0 14px 26px -14px rgba(10,21,38,0.55); } 50%{ box-shadow:0 0 0 6px #fff, 0 0 0 16px rgba(242,129,28,0.22), 0 14px 26px -14px rgba(10,21,38,0.55); } }
+  .rt-tip{ position:absolute; bottom:calc(100% + 12px); left:50%; transform:translate(-50%, 6px); width:210px; background:var(--navy-950); color:#fff; font-size:13px; font-weight:500; line-height:1.45; padding:10px 12px; border-radius:12px; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; z-index:5; text-align:left; }
+  .rt-tip::after{ content:""; position:absolute; top:100%; left:50%; margin-left:-6px; border:6px solid transparent; border-top-color:var(--navy-950); }
+  .rt-node:hover .rt-tip, .rt-node:focus-visible .rt-tip{ opacity:1; transform:translate(-50%, 0); }
+
+  .rt-finish .rt-dot{ background:var(--navy-950); color:var(--gold-400); border-color:var(--navy-950); }
+  .rt-finish .rt-label{ color:var(--ink-500); }
+  .rt-map.all-done .rt-finish .rt-dot{ background:var(--gold-400); color:var(--navy-950); border-color:var(--gold-400); }
+
+  .rt-walker{ position:absolute; z-index:4; left:0; top:0; transform:translate(-50%, -100%); pointer-events:none; display:flex; flex-direction:column; align-items:center; opacity:0; transition:opacity .3s ease; }
+  .rt-walker.on{ opacity:1; }
+  .rt-walker span{ background:var(--accent); color:#0A1526; font-size:12px; font-weight:800; padding:6px 11px; border-radius:999px; white-space:nowrap; box-shadow:0 10px 20px -10px rgba(242,129,28,0.8); }
+  .rt-walker i{ width:2px; height:12px; background:var(--accent); }
+
+  .rt-contact{ margin-top:40px; display:flex; flex-wrap:wrap; align-items:center; gap:16px 28px; background:var(--cream-100); border:1px solid var(--line-dark); border-radius:20px; padding:22px 26px; font-size:14.5px; line-height:1.6; color:var(--ink-500); }
+  .rt-contact strong{ color:var(--navy-950); display:block; font-size:16px; }
+  .rt-contact a{ color:#C4610C; font-weight:600; word-break:break-word; }
+  .rt-contact-ico{ flex:0 0 48px; height:48px; border-radius:14px; background:#fff; border:1px solid var(--line-dark); color:#C4610C; display:flex; align-items:center; justify-content:center; }
+
+  /* toast */
+  .rt-toast{ position:fixed; left:50%; bottom:28px; transform:translate(-50%, calc(100% + 60px)); visibility:hidden; z-index:400; background:var(--navy-950); color:#fff; font-weight:600; font-size:15px; padding:14px 20px; border-radius:16px; box-shadow:0 20px 40px -16px rgba(10,21,38,0.6); display:flex; align-items:center; gap:12px; transition:transform .45s cubic-bezier(.16,.8,.3,1), visibility .45s; max-width:calc(100vw - 32px); }
+  .rt-toast.show{ transform:translate(-50%, 0); visibility:visible; }
+  .rt-toast b{ color:var(--gold-400); }
+
+  /* ventana de detalle (zoom) */
+  .rt-modal{ position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .rt-modal[hidden]{ display:none; }
+  .rt-backdrop{ position:absolute; inset:0; background:rgba(10,21,38,0.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); animation:rt-fade .3s ease; }
+  @keyframes rt-fade{ from{ opacity:0; } }
+  .rt-dialog{ position:relative; width:100%; max-width:780px; max-height:calc(100vh - 48px); display:flex; flex-direction:column; background:#fff; border-radius:26px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(10,21,38,0.7); }
+  .rt-dialog.zoom{ animation:rt-zoom .5s cubic-bezier(.16,.9,.3,1); }
+  @keyframes rt-zoom{ from{ opacity:0; transform:translate(var(--dx,0), var(--dy,0)) scale(.12); } 60%{ opacity:1; } }
+  .rt-dialog.slide-next .rt-dbody, .rt-dialog.slide-next .rt-dhead-main{ animation:rt-slide-l .4s cubic-bezier(.16,.8,.3,1); }
+  .rt-dialog.slide-prev .rt-dbody, .rt-dialog.slide-prev .rt-dhead-main{ animation:rt-slide-r .4s cubic-bezier(.16,.8,.3,1); }
+  @keyframes rt-slide-l{ from{ opacity:0; transform:translateX(30px); } }
+  @keyframes rt-slide-r{ from{ opacity:0; transform:translateX(-30px); } }
+  .rt-dhead, .rt-dfoot{ flex-shrink:0; }
+  .rt-dhead{ background:var(--navy-950); color:#fff; padding:22px 26px 20px 26px; position:relative; overflow:hidden; }
+  .rt-dhead::after{ content:""; position:absolute; right:-80px; top:-100px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle, rgba(242,129,28,0.3), transparent 70%); pointer-events:none; }
+  .rt-dtop{ position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .rt-strip{ display:flex; gap:4px; flex-wrap:wrap; }
+  .rt-strip .gap{ width:8px; }
+  .rt-sdot{ font:inherit; width:24px; height:24px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.25); background:transparent; color:rgba(255,255,255,0.6); font-size:10px; font-weight:700; cursor:pointer; padding:0; font-family:'IBM Plex Mono', ui-monospace, monospace; transition:all .2s ease; }
+  .rt-sdot:hover{ border-color:#fff; color:#fff; }
+  .rt-sdot.done{ background:rgba(242,129,28,0.25); border-color:rgba(242,129,28,0.6); color:#fff; }
+  .rt-sdot.on{ background:var(--accent); border-color:var(--accent); color:#0A1526; }
+  .rt-x{ font:inherit; flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.06); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s ease; }
+  .rt-x:hover{ background:rgba(255,255,255,0.16); }
+  .rt-dhead-main{ position:relative; z-index:1; display:flex; align-items:center; gap:20px; margin-top:20px; }
+  .rt-dicon{ flex:0 0 72px; height:72px; border-radius:20px; background:var(--accent); color:#0A1526; display:flex; align-items:center; justify-content:center; }
+  .rt-dicon svg{ width:32px; height:32px; }
+  .rt-dstage{ font-size:13px; color:var(--gold-400); font-weight:600; }
+  .rt-dhead h3{ font-size:clamp(21px,2.6vw,28px); line-height:1.2; color:#fff; margin-top:4px; }
+  .rt-dbody{ overflow-y:auto; padding:26px 28px 8px 28px; }
+  .rt-lead{ font-size:17px; line-height:1.7; color:#3E4759; margin:0; }
+  .rt-block{ margin-top:22px; }
+  .rt-block h5{ font-family:'Bricolage Grotesque','Public Sans',sans-serif; font-size:16px; color:var(--navy-950); margin:0 0 10px 0; font-weight:700; }
   .rt-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
   .rt-list li{ position:relative; padding-left:30px; font-size:15.5px; line-height:1.6; color:var(--ink-800); }
   .rt-list li::before{ content:""; position:absolute; left:4px; top:6px; width:14px; height:14px; border-radius:50%; border:3px solid var(--accent); background:#fff; }
   .rt-list.ordered{ counter-reset:rt; }
   .rt-list.ordered li{ counter-increment:rt; }
   .rt-list.ordered li::before{ content:counter(rt); border:none; background:var(--navy-950); color:#fff; width:22px; height:22px; top:1px; left:0; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
-  .rt-note{ display:flex; gap:14px; align-items:flex-start; border-radius:16px; padding:16px 18px; font-size:15px; line-height:1.6; background:var(--cream-100); border:1px solid var(--line-dark); color:var(--ink-800); }
+  .rt-note{ display:flex; gap:14px; align-items:flex-start; border-radius:16px; padding:15px 17px; font-size:15px; line-height:1.6; background:var(--cream-100); border:1px solid var(--line-dark); color:var(--ink-800); }
   .rt-note.warn{ background:#FFF4E8; border-color:var(--accent-border); }
   .rt-note.ok{ background:#EEF8F2; border-color:rgba(46,158,106,0.3); }
   .rt-note-ico{ flex:0 0 30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; background:#fff; color:#C4610C; border:1px solid var(--line-dark); }
   .rt-note.ok .rt-note-ico{ color:#2E9E6A; }
   .rt-cards{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .rt-card{ border:1.5px solid var(--line-dark); border-radius:16px; padding:18px; background:#fff; }
-  .rt-card .mono{ font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-500); font-weight:600; }
-  .rt-card h6{ font-family:'Bricolage Grotesque','Public Sans',sans-serif; font-size:24px; color:var(--navy-950); margin:6px 0 0 0; }
+  .rt-card{ border:1.5px solid var(--line-dark); border-radius:16px; padding:18px; background:#fff; transition:border-color .2s ease, transform .2s ease; }
+  .rt-card:hover{ border-color:var(--accent-border); transform:translateY(-2px); }
+  .rt-card small{ font-size:13px; color:var(--ink-500); font-weight:600; }
+  .rt-card h6{ font-family:'Bricolage Grotesque','Public Sans',sans-serif; font-size:24px; color:var(--navy-950); margin:4px 0 0 0; }
   .rt-card p{ font-size:14.5px; color:var(--ink-500); line-height:1.55; margin:8px 0 0 0; }
   .rt-mails{ display:flex; flex-direction:column; gap:8px; }
   .rt-mail{ display:flex; align-items:center; gap:12px; text-decoration:none; border:1.5px solid var(--line-dark); border-radius:14px; padding:12px 16px; color:var(--navy-950); font-weight:600; font-size:14.5px; word-break:break-all; transition:border-color .2s ease, background .2s ease; }
   .rt-mail:hover{ border-color:var(--accent-border); background:#FFF4E8; }
   .rt-mail svg{ flex-shrink:0; color:#C4610C; }
   .rt-checks{ display:flex; flex-direction:column; gap:8px; }
-  .rt-check{ display:flex; align-items:center; gap:14px; border:1.5px solid var(--line-dark); border-radius:14px; padding:14px 16px; cursor:pointer; font-size:15px; color:var(--navy-950); font-weight:500; transition:all .2s ease; }
+  .rt-check{ position:relative; display:flex; align-items:center; gap:14px; border:1.5px solid var(--line-dark); border-radius:14px; padding:14px 16px; cursor:pointer; font-size:15px; color:var(--navy-950); font-weight:500; transition:all .2s ease; }
   .rt-check input{ position:absolute; opacity:0; width:1px; height:1px; }
   .rt-check .box{ flex:0 0 24px; height:24px; border-radius:7px; border:2px solid rgba(10,21,38,0.25); display:flex; align-items:center; justify-content:center; color:transparent; transition:all .2s ease; }
   .rt-check input:checked + .box{ background:#2E9E6A; border-color:#2E9E6A; color:#fff; }
-  .rt-check:has(input:checked){ background:#EEF8F2; border-color:rgba(46,158,106,0.35); }
+  .rt-check.on{ background:#EEF8F2; border-color:rgba(46,158,106,0.35); }
   .rt-check-count{ font-size:13px; color:var(--ink-500); margin-top:10px; }
-  .rt-detail-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:18px 22px; border-top:1px solid var(--line-dark); background:var(--cream-100); }
-  .rt-btn{ font:inherit; display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:700; border-radius:999px; padding:12px 20px; cursor:pointer; border:1.5px solid rgba(10,21,38,0.2); background:#fff; color:var(--navy-950); transition:transform .2s ease, background .2s ease; }
+  .rt-dfoot{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px 22px; border-top:1px solid var(--line-dark); background:var(--cream-100); }
+  .rt-btn{ font:inherit; display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:700; border-radius:999px; padding:12px 20px; cursor:pointer; border:1.5px solid rgba(10,21,38,0.2); background:#fff; color:var(--navy-950); transition:transform .2s ease, background .2s ease, border-color .2s ease; }
   .rt-btn:hover{ transform:translateY(-2px); }
   .rt-btn.primary{ background:var(--accent); border-color:var(--accent); color:#0A1526; }
+  .rt-btn.is-done{ background:#2E9E6A; border-color:#2E9E6A; color:#fff; }
   .rt-btn[disabled]{ opacity:.35; cursor:default; transform:none; }
-  .rt-foot-nav{ display:flex; gap:10px; }
+  .rt-nav{ display:flex; gap:8px; }
+  .rt-btn.icon{ padding:12px 14px; }
+  .rt-keys{ font-size:12px; color:var(--ink-500); }
+  body.rt-lock{ overflow:hidden; }
 
-  @media (max-width:920px){
-    .rt-steps, .rt-steps.four{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .rt-detail-body{ grid-template-columns:1fr; gap:10px; padding:28px 26px; }
-    .rt-big{ font-size:64px; }
-    .rt-side{ display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap; }
-    .rt-side p{ display:none; }
+  .rt-confetti{ position:fixed; inset:0; pointer-events:none; z-index:350; overflow:hidden; }
+  .rt-confetti i{ position:absolute; top:-14px; width:9px; height:14px; border-radius:2px; animation:rt-fall var(--d,2.2s) cubic-bezier(.25,.6,.4,1) forwards; }
+  @keyframes rt-fall{ to{ transform:translate(var(--x,0), 105vh) rotate(var(--r,540deg)); opacity:.2; } }
+
+  @media (max-width:980px){
+    .rt-nodes{ padding:0 20px; }
+    .rt-row-head{ padding:0 110px; }
+    .rt-nodes li, .rt-node{ width:96px; }
+    .rt-dot{ width:58px; height:58px; }
+    .rt-label{ font-size:12.5px; }
+  }
+  @media (max-width:760px){
+    .rt-summary{ grid-template-columns:auto minmax(0,1fr); padding:18px; }
+    .rt-sum-actions{ grid-column:1 / -1; }
+    .rt-row + .rt-row{ margin-top:22px; }
+    .rt-row-head{ padding:0 0 0 76px; justify-content:flex-start; text-align:left; }
+    .rt-nodes, .rt-row.rev .rt-nodes{ flex-direction:column; padding:0; gap:14px; }
+    .rt-nodes li{ width:100%; justify-content:flex-start; }
+    .rt-node{ flex-direction:row; width:100%; text-align:left; gap:18px; padding-left:4px; }
+    .rt-dot{ width:58px; height:58px; flex-shrink:0; }
+    .rt-label{ font-size:15px; }
+    .rt-tip{ display:none; }
+    .rt-walker{ display:none; }
+    .rt-modal{ padding:0; align-items:flex-end; }
+    .rt-dialog{ max-height:92vh; border-radius:24px 24px 0 0; }
+    .rt-dhead{ padding:18px 18px 16px 18px; }
+    .rt-dicon{ flex-basis:56px; height:56px; border-radius:16px; }
+    .rt-dbody{ padding:20px 18px 6px 18px; }
+    .rt-cards{ grid-template-columns:1fr; }
+    .rt-sdot{ width:21px; height:21px; font-size:9px; }
+    .rt-keys{ display:none; }
+    .rt-dfoot{ padding:14px 16px; }
+    .rt-dfoot .rt-btn.primary{ flex:1; justify-content:center; }
   }
   @media (max-width:600px){
     .rt-tabs{ width:100%; }
     .rt-tab{ flex:1; justify-content:center; padding:11px 10px; font-size:13.5px; }
-    .rt-stage{ padding-left:0; }
-    .rt-stage::before{ display:none; }
-    .rt-stage-badge{ position:static; flex-shrink:0; }
-    .rt-stage-head{ flex-wrap:wrap; }
-    .rt-steps, .rt-steps.four{ grid-template-columns:1fr; }
-    .rt-step{ min-height:0; }
-    .rt-contact{ margin-left:0; padding:22px; }
-    .rt-cards{ grid-template-columns:1fr; }
-    .rt-detail{ border-radius:20px; }
-    .rt-detail-top{ padding:14px 16px; }
-    .rt-dot{ width:22px; height:22px; font-size:9.5px; }
-    .rt-detail-body{ padding:24px 18px; }
-    .rt-detail-foot{ padding:14px 16px; }
-    .rt-foot-nav{ width:100%; }
-    .rt-foot-nav .rt-btn{ flex:1; justify-content:center; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .rt-node.next .rt-dot{ animation:none; }
+    .rt-dialog.zoom, .rt-dialog .rt-dbody, .rt-dialog .rt-dhead-main{ animation:none !important; }
   }
 </style>
 </head>
@@ -590,19 +661,18 @@
     <a href="index.html#formacion" class="nav-link">Formación</a>
     <a href="index.html#contacto" class="nav-link">Contacto</a>
   </nav>
-  <a href="index.html#empresas" class="btn-ghost">Portal empresas</a>
+  <a href="#ruta-practicas" class="btn-ghost">Ruta 2026-2</a>
 </header>
 <section class="page-hero">
   <div class="page-hero-inner">
     <div class="page-hero-text">
       <a href="index.html#programas" class="back-link js-reveal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Volver a la red de programas</a>
-      <div class="eyebrow js-reveal stagger-1"><span class="eyebrow-dot"></span> Proy. Social / Oficina de Prácticas</div>
+      <div class="eyebrow js-reveal stagger-1"><span class="eyebrow-dot"></span> Proy. Social / Estudiantes</div>
       <h1 class="js-reveal stagger-2">Prácticas Profesionales</h1>
-      <p class="page-hero-sub js-reveal stagger-3">Conectamos el talento Sanbue con empresas aliadas: gestionamos oportunidades de práctica y empleo para más de 25 programas académicos, bajo un sello de ética, sostenibilidad y desarrollo humano.</p>
+      <p class="page-hero-sub js-reveal stagger-3">Tu guía para llegar a la práctica: 3 etapas y 14 pasos, desde la inscripción hasta la certificación. Explora la ruta 2026-2 y amplía cada paso para ver todo lo que necesitas.</p>
       <div class="page-hero-actions js-reveal stagger-4">
-        <a href="https://formularios.usbcali.edu.co/solicitud-de-practicantes/" target="_blank" rel="noopener" class="btn-primary">Solicitar practicantes <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        <a href="#ruta-practicas" class="btn-primary">Ver la ruta 2026-2 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         <a href="mailto:prof.empleaypractica@usbcali.edu.co" class="btn-outline-light">Escribir a la oficina</a>
-        <a href="#ruta-practicas" class="btn-outline-light">Ver la ruta 2026-2</a>
       </div>
     </div>
     <div class="page-hero-visual js-reveal stagger-3" id="heroVisual">
@@ -617,123 +687,25 @@
         <div class="hv-dot" style="top:88%; left:22%;"></div>
       </div>
       <div class="hv-frame"><i></i><i></i><i></i><i></i></div>
-      <div class="hv-caption mono">Red neuronal · talento ↔ empresa</div>
+      <div class="hv-caption mono">Ruta · estudiante → práctica</div>
     </div>
   </div>
 </section>
 
 <section class="stats">
   <div class="stats-grid" id="statsGrid" style="--cols:3">
-    <div class="stat-item js-reveal stagger-1"><div class="stat-num mono" data-count="25" data-prefix="+" >+25</div><div class="stat-label">Programas académicos</div></div>
-    <div class="stat-item js-reveal stagger-2"><div class="stat-divider"></div><div class="stat-num mono" data-count="6" data-prefix="" >6</div><div class="stat-label">Facultades participantes</div></div>
+    <div class="stat-item js-reveal stagger-1"><div class="stat-num mono" data-count="3" data-prefix="" >3</div><div class="stat-label">Etapas de la ruta</div></div>
+    <div class="stat-item js-reveal stagger-2"><div class="stat-divider"></div><div class="stat-num mono" data-count="14" data-prefix="" >14</div><div class="stat-label">Pasos, de la inscripción a la certificación</div></div>
     <div class="stat-item js-reveal stagger-3"><div class="stat-divider"></div><div class="stat-num mono">8am–6pm</div><div class="stat-label">Lunes a viernes, horario de atención</div></div>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow js-reveal"><span class="eyebrow-dot"></span> Proy. Social / ¿Qué es?</div>
-      <h2 class="js-reveal stagger-1">Formación con experiencia real</h2>
-      <p class="js-reveal stagger-2"></p>
-    </div>
-
-  <div class="intro-inner" style="gap:0;">
-    <div class="intro-copy" style="max-width:100%;">
-      <p class="js-reveal">La Oficina de Prácticas Profesionales <strong>conecta las necesidades de empresas y organizaciones con el mejor talento Sanbue</strong>, gestionando diversas oportunidades de prácticas y empleo para estudiantes de toda la Universidad.</p>
-      <p class="js-reveal stagger-1">Nuestros estudiantes se distinguen por una formación integral basada en principios franciscanos: combinan competencias técnicas con habilidades interpersonales, alta capacidad de adaptación en distintos entornos empresariales, y un compromiso genuino con el desarrollo humano y la sostenibilidad ambiental.</p>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow js-reveal"><span class="eyebrow-dot"></span> Programas participantes</div>
-      <h2 class="js-reveal stagger-1">Talento de 6 facultades</h2>
-      <p class="js-reveal stagger-2">La plataforma de prácticas incluye estudiantes de más de 25 programas académicos.</p>
-    </div>
-
-  <div class="card-grid" style="--cg-cols:3">
-    <div class="info-card js-reveal stagger-1">
-      <div class="info-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"></rect><line x1="8" y1="6" x2="8" y2="6.01"></line><line x1="12" y1="6" x2="12" y2="6.01"></line><line x1="16" y1="6" x2="16" y2="6.01"></line><line x1="8" y1="10" x2="8" y2="10.01"></line><line x1="12" y1="10" x2="12" y2="10.01"></line><line x1="16" y1="10" x2="16" y2="10.01"></line><line x1="8" y1="14" x2="8" y2="14.01"></line><line x1="12" y1="14" x2="12" y2="14.01"></line><line x1="16" y1="14" x2="16" y2="14.01"></line><line x1="9" y1="22" x2="9" y2="18"></line><line x1="15" y1="22" x2="15" y2="18"></line></svg></div>
-      <h4>Ciencias Económicas</h4>
-      <p>Mercadeo, Finanzas, Economía, Administración de Negocios y Contaduría.</p>
-    </div>
-    <div class="info-card js-reveal stagger-2">
-      <div class="info-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
-      <h4>Ingeniería</h4>
-      <p>Sistemas, Biomédica, Multimedia, Industrial y Agroindustrial.</p>
-    </div>
-    <div class="info-card js-reveal stagger-3">
-      <div class="info-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg></div>
-      <h4>Derecho y Ciencias Políticas</h4>
-      <p>Abogados, Gobierno y Relaciones Internacionales.</p>
-    </div>
-    <div class="info-card js-reveal stagger-4">
-      <div class="info-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg></div>
-      <h4>Humanidades y Educación</h4>
-      <p>Educación Infantil, Educación Física, Literatura y Psicología.</p>
-    </div>
-    <div class="info-card js-reveal stagger-1">
-      <div class="info-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
-      <h4>Otros programas</h4>
-      <p>Gestión Deportiva, Arquitectura, Diseño de Vestuario y Ciencias Culinarias.</p>
-    </div>
-  </div>
-
-  </div>
-</section>
-
-<section class="section-dark">
-  <div class="wrap">
-    <div class="sec-head on-dark">
-      <div class="eyebrow js-reveal"><span class="eyebrow-dot"></span> Para empresas aliadas</div>
-      <h2 class="js-reveal stagger-1">Así funciona la vinculación</h2>
-      <p class="js-reveal stagger-2">Del primer contacto a la firma del convenio de práctica.</p>
-    </div>
-
-  <div class="timeline">
-    <div class="timeline-step on-dark js-reveal stagger-1">
-      <div class="timeline-num mono">01</div>
-      <div class="timeline-content on-dark">
-        <h4>Solicita practicantes</h4>
-        <p>Completa el formulario de solicitud en línea y cuéntanos el perfil académico que tu organización necesita.</p>
-      </div>
-    </div>
-    <div class="timeline-step on-dark js-reveal stagger-2">
-      <div class="timeline-num mono">02</div>
-      <div class="timeline-content on-dark">
-        <h4>Te conectamos con talento Sanbue</h4>
-        <p>Filtramos hojas de vida según tus necesidades y las de nuestros programas académicos.</p>
-      </div>
-    </div>
-    <div class="timeline-step on-dark js-reveal stagger-3">
-      <div class="timeline-num mono">03</div>
-      <div class="timeline-content on-dark">
-        <h4>Acompañamiento continuo</h4>
-        <p>Ofrecemos capacitaciones estratégicas, talleres de fortalecimiento para tu equipo de RR.HH. y ferias laborales presenciales y virtuales.</p>
-      </div>
-    </div>
-    <div class="timeline-step on-dark js-reveal stagger-4">
-      <div class="timeline-num mono">04</div>
-      <div class="timeline-content on-dark">
-        <h4>Cumple tu cuota SENA</h4>
-        <p>Vincula practicantes universitarios como alternativa válida para tu cuota de aprendices.</p>
-      </div>
-    </div>
-  </div>
-
   </div>
 </section>
 
 <section class="rp-section rp-light" id="ruta-practicas">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow js-reveal"><span class="eyebrow-dot"></span> Estudiantes · Prácticas 2026-2</div>
+      <div class="eyebrow js-reveal"><span class="eyebrow-dot"></span> Prácticas 2026-2</div>
       <h2 class="js-reveal stagger-1">Ruta de prácticas 2026-2</h2>
-      <p class="js-reveal stagger-2">3 etapas y 14 pasos para llegar a tu práctica. Haz clic en cualquier paso para ampliar la información.</p>
+      <p class="js-reveal stagger-2">Recorre el camino de la inscripción a la certificación. Toca cualquier paso para ver toda su información y márcalo cuando lo completes.</p>
     </div>
 
     <div class="rt-tabs js-reveal stagger-3" role="tablist" aria-label="Modo de la ruta">
@@ -773,19 +745,15 @@
   </div>
 </section>
 
-<section class="content-section"><div class="wrap">  <div class="highlight js-reveal">
-    <div class="highlight-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"></path></svg></div>
-    <div class="highlight-text">“Conectamos las necesidades de empresas y organizaciones con el mejor talento Sanbue, gestionando diversas oportunidades de prácticas y empleo.”<span class="highlight-source">Fuente: usbcali.edu.co/practicas-profesionales-2 — Responsable: Juan Carlos Aristizábal</span></div>
-  </div>
-</div></section>
-<section class="cta-banner-wrap">
+<section class="cta-banner-wrap" style="background:#fff;">
   <div class="cta-banner js-reveal">
     <div>
-      <h3>¿Tu empresa busca talento comprometido?</h3>
-      <p>Solicita practicantes en línea o escríbenos directamente — te respondemos en horario de oficina, PBX 602 488 2222.</p>
+      <h3>¿Tienes dudas sobre tu proceso de práctica?</h3>
+      <p>Escríbele a la Oficina de Prácticas o visítanos en el Edificio Cerezos, 1.er piso, ala izquierda. Lunes a viernes, 8:00 a.m. – 6:00 p.m.</p>
     </div>
     <div class="cta-actions">
-      <a href="https://formularios.usbcali.edu.co/solicitud-de-practicantes/" target="_blank" rel="noopener" class="btn-dark">Formulario de solicitud <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><a href="mailto:prof.empleaypractica@usbcali.edu.co" class="btn-outline-light" style="border-color:rgba(10,21,38,0.35); color:#0A1526;">Escribir a la oficina</a>
+      <a href="mailto:prof.empleaypractica@usbcali.edu.co" class="btn-dark">prof.empleaypractica@usbcali.edu.co</a>
+      <a href="mailto:auxiliar.egresayb2@usbcali.edu.co" class="btn-outline-light" style="border-color:rgba(255,255,255,0.6);">auxiliar.egresayb2@usbcali.edu.co</a>
     </div>
   </div>
 </section>
@@ -1512,22 +1480,23 @@
 </script>
 <script>
 /* ==========================================================================
-   Ruta de prácticas 2026-2 — mapa de 3 etapas / 14 pasos con "zoom" por paso.
-   Para AMPLIAR la información de un paso, agrega bloques a su arreglo `blocks`.
-   Tipos de bloque disponibles:
-     { type:'list',    title:'...', items:['...'] }          lista con viñetas
-     { type:'steps',   title:'...', items:['...'] }          lista numerada
-     { type:'note',    tone:'info'|'warn'|'ok', text:'...' } recuadro destacado
-     { type:'cards',   title:'...', items:[{ tag, h, p }] }  tarjetas lado a lado
-     { type:'mails',   title:'...', items:['correo@...'] }   botones de correo
-     { type:'check',   title:'...', items:['...'] }          lista para marcar
-     { type:'html',    title:'...', html:'<p>...</p>' }      contenido libre
-   Cada paso también se puede compartir con un enlace directo: practicas-profesionales.html#paso-8
+   Ruta de prácticas 2026-2 — camino interactivo (3 etapas / 14 pasos)
+   · Clic en un paso: se abre su información ampliada (zoom).
+   · "Marcar como hecho": el camino se pinta y el marcador "Estás aquí" avanza.
+     El avance se guarda en el navegador del estudiante.
+   · Enlace directo a cada paso: practicas-profesionales.html#paso-8
+   Para AMPLIAR la información de un paso, agrega bloques a su arreglo `blocks`:
+     { type:'list',  title:'...', items:['...'] }          lista con viñetas
+     { type:'steps', title:'...', items:['...'] }          lista numerada
+     { type:'note',  tone:'info'|'warn'|'ok', text:'...' } recuadro destacado
+     { type:'cards', title:'...', items:[{ tag, h, p }] }  tarjetas lado a lado
+     { type:'mails', title:'...', items:['correo@...'] }   botones de correo
+     { type:'check', title:'...', items:['...'] }          lista para marcar
+     { type:'html',  title:'...', html:'<p>...</p>' }      contenido libre
    ========================================================================== */
 (function(){
   var mount = document.getElementById('rtRoute');
   if(!mount) return;
-  var section = document.getElementById('ruta-practicas');
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var MAIL1 = 'prof.empleaypractica@usbcali.edu.co';
@@ -1536,10 +1505,34 @@
   var NOTE_CARTA = 'Deberás firmar la <strong>carta de compromiso de matrícula</strong> en caso de iniciar tu práctica antes de las fechas de matrícula financiera y académica.';
 
   var STAGES = [
-    { name:'Inscripción y preparación', end:'Fin de la etapa 1' },
-    { name:'Ubicación y formalización', end:'Fin de la etapa 2' },
-    { name:'Seguimiento y retroalimentación', end:'Fin de la etapa 3' }
+    { name:'Inscripción y preparación' },
+    { name:'Ubicación y formalización' },
+    { name:'Seguimiento y retroalimentación' }
   ];
+
+  // nombre corto que se ve en el camino
+  var LABELS = ['Pide los lineamientos','Inscríbete como aspirante','Aprobación de tu programa','Elabora tu hoja de vida','Sube tu HV','Inducción y talleres',
+                'Matricula la asignatura','Vinculación','Apertura de la práctica','Legaliza tu vinculación',
+                'Docente asesor','Reglamento interno','Encuesta de satisfacción','Certificación'];
+
+  var I = function(d){ return '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+  var ICONS = [
+    I('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>'),
+    I('<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>'),
+    I('<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'),
+    I('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2M15 12h2M7 16h10"/>'),
+    I('<path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>'),
+    I('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>'),
+    I('<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/>'),
+    I('<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>'),
+    I('<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>'),
+    I('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'),
+    I('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>'),
+    I('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'),
+    I('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="m9.5 9.5 1.5 1.5 3-3"/>'),
+    I('<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>')
+  ];
+  var ICON_FLAG = I('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>');
 
   var STEPS = [
     { stage:0, title:'Solicita los lineamientos y requisitos de la práctica',
@@ -1607,173 +1600,273 @@
       blocks:[ { type:'note', tone:'ok', text:'Recuerda que el tiempo de práctica realizado <strong>contará como parte de tu experiencia laboral</strong>.' } ] }
   ];
 
-  var ICON_ZOOM = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>';
-  var ICON_MAIL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>';
-  var ICON_INFO = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>';
-  var ICON_WARN = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
-  var ICON_OK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-  var ICON_PIN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
+  var S = function(d, w){ return '<svg width="' + (w||16) + '" height="' + (w||16) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+  var ICON_MAIL = S('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>', 18);
+  var ICON_INFO = S('<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>');
+  var ICON_WARN = S('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>');
+  var ICON_OK = S('<polyline points="20 6 9 17 4 12"/>');
+  var ICON_PIN = S('<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>', 22);
+  var ICON_X = S('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>', 18);
+  var ICON_L = S('<polyline points="15 18 9 12 15 6"/>', 18);
+  var ICON_R = S('<polyline points="9 18 15 12 9 6"/>', 18);
 
+  // ---------- avance guardado en el navegador ----------
+  var KEY = 'usb-ruta-practicas-2026-2';
+  var done = [];
+  try{ var saved = JSON.parse(localStorage.getItem(KEY) || '[]'); if(Array.isArray(saved)) done = saved.filter(function(n){ return n >= 0 && n < STEPS.length; }); }catch(e){}
+  var docChecks = {};
+  try{ docChecks = JSON.parse(localStorage.getItem(KEY + '-docs') || '{}') || {}; }catch(e){ docChecks = {}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(done)); localStorage.setItem(KEY + '-docs', JSON.stringify(docChecks)); }catch(e){} }
+  function isDone(i){ return done.indexOf(i) > -1; }
+  function nextIdx(){ for(var i=0;i<STEPS.length;i++){ if(!isDone(i)) return i; } return STEPS.length; }
+  function stageSteps(si){ var a=[]; STEPS.forEach(function(s,i){ if(s.stage===si) a.push(i); }); return a; }
   function pad(n){ return (n < 10 ? '0' : '') + n; }
-  var checks = {}; // estado en memoria de la lista de documentos
 
-  // ---------- vista 1: mapa de la ruta ----------
-  function renderMap(){
-    var html = '<div class="rt-view">';
-    STAGES.forEach(function(st, si){
-      var idx = []; STEPS.forEach(function(s, i){ if(s.stage === si) idx.push(i); });
-      html += '<div class="rt-stage">' +
-        '<div class="rt-stage-head"><div class="rt-stage-badge mono"><small>ETAPA</small><b>' + (si+1) + '</b></div>' +
-        '<h3>' + st.name + '</h3><span class="mono">· ' + idx.length + ' pasos</span></div>' +
-        '<div class="rt-steps' + (idx.length === 4 ? ' four' : '') + '">' +
-        idx.map(function(i){
-          var s = STEPS[i];
-          return '<button type="button" class="rt-step" data-step="' + i + '" aria-label="Paso ' + (i+1) + ': ' + s.title + '. Ver más información">' +
-            '<span class="rt-step-top"><span class="rt-step-num mono">' + pad(i+1) + '</span><span class="rt-step-zoom">' + ICON_ZOOM + '</span></span>' +
-            '<h4>' + s.title + '</h4><p>' + s.short + '</p><span class="rt-step-more">Ver más →</span></button>';
-        }).join('') +
-        '</div><div class="rt-end">' + ICON_OK + ' ' + st.end + '</div></div>';
-    });
-    html += '<div class="rt-contact"><span class="rt-contact-ico">' + ICON_PIN + '</span>' +
-      '<div><strong>Oficina de Prácticas</strong>Edificio Cerezos, 1.er piso, ala izquierda</div>' +
-      '<div><a href="mailto:' + MAIL1 + '">' + MAIL1 + '</a><br><a href="mailto:' + MAIL2 + '">' + MAIL2 + '</a></div></div>';
-    html += '</div>';
-    mount.innerHTML = html;
+  // ---------- estructura ----------
+  var html = '<div class="rt-summary" id="rtSummary"></div><div class="rt-map" id="rtMap">' +
+    '<svg class="rt-road" id="rtRoad" aria-hidden="true"><path class="base"/><path class="lane"/><path class="done"/></svg>';
+  STAGES.forEach(function(st, si){
+    var idx = stageSteps(si);
+    html += '<div class="rt-row' + (si === 1 ? ' rev' : '') + '" data-stage="' + si + '">' +
+      '<div class="rt-row-head"><h3><span>Etapa ' + (si+1) + '.</span> ' + st.name + '</h3><span class="rt-row-count" data-count="' + si + '"></span></div>' +
+      '<ol class="rt-nodes">' + idx.map(function(i){
+        return '<li><button type="button" class="rt-node" data-step="' + i + '" aria-label="Paso ' + (i+1) + ': ' + STEPS[i].title + '">' +
+          '<span class="rt-dot">' + ICONS[i] + '<span class="rt-num">' + (i+1) + '</span></span>' +
+          '<span class="rt-label">' + LABELS[i] + '</span><span class="rt-tip" aria-hidden="true">' + STEPS[i].short + '</span></button></li>';
+      }).join('') +
+      (si === STAGES.length - 1 ? '<li><div class="rt-node rt-finish" aria-hidden="true"><span class="rt-dot">' + ICON_FLAG + '</span><span class="rt-label">¡Práctica certificada!</span></div></li>' : '') +
+      '</ol></div>';
+  });
+  html += '<div class="rt-walker" id="rtWalker" aria-hidden="true"><span>Estás aquí</span><i></i></div></div>' +
+    '<div class="rt-contact"><span class="rt-contact-ico">' + ICON_PIN + '</span>' +
+    '<div><strong>Oficina de Prácticas</strong>Edificio Cerezos, 1.er piso, ala izquierda</div>' +
+    '<div><a href="mailto:' + MAIL1 + '">' + MAIL1 + '</a><br><a href="mailto:' + MAIL2 + '">' + MAIL2 + '</a></div></div>';
+  mount.innerHTML = html;
+
+  var map = document.getElementById('rtMap');
+  var road = document.getElementById('rtRoad');
+  var pBase = road.querySelector('.base'), pLane = road.querySelector('.lane'), pDone = road.querySelector('.done');
+  var walker = document.getElementById('rtWalker');
+  var nodeEls = Array.prototype.slice.call(map.querySelectorAll('.rt-node'));   // 14 pasos + meta
+  var segLen = [], totalLen = 0, walkerLen = null;
+
+  // ---------- dibujar el camino a través de los pasos ----------
+  function centers(){
+    var m = map.getBoundingClientRect();
+    return nodeEls.map(function(n){ var d = n.querySelector('.rt-dot').getBoundingClientRect(); return { x:d.left - m.left + d.width/2, y:d.top - m.top + d.height/2 }; });
+  }
+  function drawRoad(){
+    var pts = centers(); if(!pts.length) return;
+    var w = map.clientWidth, cmds = ['M' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1)];
+    for(var k=1;k<pts.length;k++){
+      var p = pts[k-1], q = pts[k];
+      if(Math.abs(p.y - q.y) < 8 || Math.abs(p.x - q.x) < 8){ cmds.push('L' + q.x.toFixed(1) + ' ' + q.y.toFixed(1)); }
+      else {
+        var o = (p.x > w/2 ? 1 : -1) * Math.min(90, Math.abs(q.y - p.y) * 0.45);
+        cmds.push('C' + (p.x + o).toFixed(1) + ' ' + p.y.toFixed(1) + ' ' + (q.x + o).toFixed(1) + ' ' + q.y.toFixed(1) + ' ' + q.x.toFixed(1) + ' ' + q.y.toFixed(1));
+      }
+    }
+    var d = cmds.join(' ');
+    pBase.setAttribute('d', d); pLane.setAttribute('d', d); pDone.setAttribute('d', d);
+    // longitud acumulada hasta cada paso
+    segLen = [0]; var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'path'); road.appendChild(tmp);
+    for(var j=1;j<cmds.length;j++){ tmp.setAttribute('d', cmds.slice(0, j+1).join(' ')); segLen.push(tmp.getTotalLength()); }
+    road.removeChild(tmp);
+    totalLen = segLen[segLen.length - 1];
+    pDone.style.strokeDasharray = totalLen + ' ' + totalLen;
+    paintRoad(true);
+  }
+  function contiguous(){ var k=0; while(k < STEPS.length && isDone(k)) k++; return k; }
+  function paintRoad(instant){
+    var k = contiguous();
+    var len = segLen[Math.min(k, segLen.length - 1)] || 0;
+    if(instant) pDone.style.transition = 'none';
+    pDone.style.strokeDashoffset = (totalLen - len);
+    if(instant){ void pDone.getBoundingClientRect(); pDone.style.transition = ''; }
+    moveWalker(segLen[Math.min(nextIdx(), segLen.length - 1)] || 0, instant);
+  }
+  function placeWalker(L){ var pt = pBase.getPointAtLength(L); walker.style.left = pt.x + 'px'; walker.style.top = (pt.y - 40) + 'px'; }
+  function moveWalker(target, instant){
+    walker.classList.add('on');
+    if(instant || reduceMotion || walkerLen === null){ walkerLen = target; placeWalker(target); return; }
+    var from = walkerLen, t0 = null, dur = 900;
+    function step(ts){ if(!t0) t0 = ts; var p = Math.min((ts - t0)/dur, 1); var e = 1 - Math.pow(1 - p, 3); walkerLen = from + (target - from) * e; placeWalker(walkerLen); if(p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
   }
 
-  // ---------- vista 2: zoom de un paso ----------
-  function block(b, stepIdx){
+  // ---------- estado visual ----------
+  function refresh(){
+    var n = nextIdx();
+    nodeEls.forEach(function(el, i){ if(i >= STEPS.length) return; el.classList.toggle('done', isDone(i)); el.classList.toggle('next', i === n); });
+    map.classList.toggle('all-done', done.length === STEPS.length);
+    STAGES.forEach(function(st, si){
+      var idx = stageSteps(si), c = idx.filter(isDone).length;
+      var badge = map.querySelector('[data-count="' + si + '"]'); badge.textContent = c === idx.length ? 'Etapa completa' : c + ' de ' + idx.length + ' pasos';
+      badge.parentNode.parentNode.classList.toggle('complete', c === idx.length);
+    });
+    var pct = done.length / STEPS.length, C = 2 * Math.PI * 27;
+    var sum = document.getElementById('rtSummary');
+    var msg = done.length === 0 ? 'Marca cada paso a medida que lo completes y sigue tu avance aquí.'
+            : n < STEPS.length ? 'Tu siguiente paso: <button type="button" data-step="' + n + '">' + (n+1) + '. ' + LABELS[n] + '</button>'
+            : '¡Completaste toda la ruta! Recuerda que tu práctica cuenta como experiencia laboral.';
+    sum.innerHTML = '<div class="rt-ring"><svg viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" cx="32" cy="32" r="27" style="stroke-dasharray:' + C + ';stroke-dashoffset:' + (C * (1 - pct)) + '"/></svg><b>' + done.length + '/' + STEPS.length + '</b></div>' +
+      '<div class="rt-sum-text"><h3>' + (done.length === 0 ? 'Empieza tu ruta' : 'Tu avance en la ruta') + '</h3><p>' + msg + '</p></div>' +
+      '<div class="rt-sum-actions">' + (n < STEPS.length ? '<button type="button" class="rt-btn primary" data-step="' + n + '">' + (done.length ? 'Continuar' : 'Ver el paso 1') + '</button>' : '') +
+      (done.length ? '<button type="button" class="rt-link" data-act="reset">Reiniciar avance</button>' : '') + '</div>';
+  }
+
+  // ---------- ventana de detalle (zoom) ----------
+  var modal = document.createElement('div');
+  modal.className = 'rt-modal'; modal.hidden = true;
+  modal.innerHTML = '<div class="rt-backdrop" data-act="close"></div><div class="rt-dialog" role="dialog" aria-modal="true" aria-labelledby="rtTitle" tabindex="-1"></div>';
+  document.body.appendChild(modal);
+  var dialog = modal.querySelector('.rt-dialog');
+  var toast = document.createElement('div'); toast.className = 'rt-toast'; toast.setAttribute('role','status'); document.body.appendChild(toast);
+  var current = -1, lastFocus = null, toastTimer = null;
+
+  function block(b, i){
     var t = b.title ? '<h5>' + b.title + '</h5>' : '';
-    if(b.type === 'list' || b.type === 'steps'){
-      return '<div class="rt-block">' + t + '<ul class="rt-list' + (b.type === 'steps' ? ' ordered' : '') + '">' + b.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div>';
-    }
-    if(b.type === 'note'){
-      var tone = b.tone || 'info';
-      var ico = tone === 'warn' ? ICON_WARN : tone === 'ok' ? ICON_OK : ICON_INFO;
-      return '<div class="rt-block">' + t + '<div class="rt-note ' + tone + '"><span class="rt-note-ico">' + ico + '</span><div>' + b.text + '</div></div></div>';
-    }
-    if(b.type === 'cards'){
-      return '<div class="rt-block">' + t + '<div class="rt-cards">' + b.items.map(function(c){ return '<div class="rt-card"><span class="mono">' + c.tag + '</span><h6>' + c.h + '</h6><p>' + c.p + '</p></div>'; }).join('') + '</div></div>';
-    }
-    if(b.type === 'mails'){
-      return '<div class="rt-block">' + t + '<div class="rt-mails">' + b.items.map(function(m){ return '<a class="rt-mail" href="mailto:' + m + '">' + ICON_MAIL + m + '</a>'; }).join('') + '</div></div>';
-    }
+    if(b.type === 'list' || b.type === 'steps') return '<div class="rt-block">' + t + '<ul class="rt-list' + (b.type === 'steps' ? ' ordered' : '') + '">' + b.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div>';
+    if(b.type === 'note'){ var tone = b.tone || 'info'; return '<div class="rt-block">' + t + '<div class="rt-note ' + tone + '"><span class="rt-note-ico">' + (tone === 'warn' ? ICON_WARN : tone === 'ok' ? ICON_OK : ICON_INFO) + '</span><div>' + b.text + '</div></div></div>'; }
+    if(b.type === 'cards') return '<div class="rt-block">' + t + '<div class="rt-cards">' + b.items.map(function(c){ return '<div class="rt-card"><small>' + c.tag + '</small><h6>' + c.h + '</h6><p>' + c.p + '</p></div>'; }).join('') + '</div></div>';
+    if(b.type === 'mails') return '<div class="rt-block">' + t + '<div class="rt-mails">' + b.items.map(function(m){ return '<a class="rt-mail" href="mailto:' + m + '">' + ICON_MAIL + m + '</a>'; }).join('') + '</div></div>';
     if(b.type === 'check'){
-      var st = checks[stepIdx] || (checks[stepIdx] = []);
-      var done = st.filter(Boolean).length;
+      var st = docChecks[i] || []; var c = st.filter(Boolean).length;
       return '<div class="rt-block">' + t + '<div class="rt-checks">' + b.items.map(function(x, k){
-          return '<label class="rt-check"><input type="checkbox" data-check="' + k + '"' + (st[k] ? ' checked' : '') + '><span class="box">' + ICON_OK + '</span>' + x + '</label>';
-        }).join('') + '</div><div class="rt-check-count" id="rtCheckCount">' + done + ' de ' + b.items.length + ' documentos listos</div></div>';
+        return '<label class="rt-check' + (st[k] ? ' on' : '') + '"><input type="checkbox" data-check="' + k + '"' + (st[k] ? ' checked' : '') + '><span class="box">' + ICON_OK + '</span>' + x + '</label>'; }).join('') +
+        '</div><div class="rt-check-count" id="rtCheckCount">' + c + ' de ' + b.items.length + ' documentos listos</div></div>';
     }
-    if(b.type === 'html'){ return '<div class="rt-block">' + t + b.html + '</div>'; }
+    if(b.type === 'html') return '<div class="rt-block">' + t + b.html + '</div>';
     return '';
   }
-
-  var current = -1;
-  function renderStep(i, origin){
+  function renderDialog(i, dir){
     current = i;
-    var s = STEPS[i], st = STAGES[s.stage];
-    var dots = '';
+    var s = STEPS[i], strip = '';
     STEPS.forEach(function(x, k){
-      if(k > 0 && STEPS[k-1].stage !== x.stage) dots += '<span class="sep"></span>';
-      dots += '<button type="button" class="rt-dot mono' + (k === i ? ' on' : '') + '" data-step="' + k + '" aria-label="Ir al paso ' + (k+1) + '"' + (k === i ? ' aria-current="step"' : '') + '>' + (k+1) + '</button>';
+      if(k > 0 && STEPS[k-1].stage !== x.stage) strip += '<span class="gap"></span>';
+      strip += '<button type="button" class="rt-sdot' + (k === i ? ' on' : '') + (isDone(k) ? ' done' : '') + '" data-step="' + k + '" aria-label="Ir al paso ' + (k+1) + '"' + (k === i ? ' aria-current="step"' : '') + '>' + (k+1) + '</button>';
     });
-    mount.innerHTML =
-      '<div class="rt-detail rt-zoom-in" style="--ox:' + (origin ? origin.x : '50%') + '; --oy:' + (origin ? origin.y : '0%') + ';">' +
-        '<div class="rt-detail-top">' +
-          '<nav class="rt-crumbs" aria-label="Ubicación"><button type="button" data-act="map">Ruta 2026-2</button><span>›</span><span>Etapa ' + (s.stage+1) + '</span><span>›</span><strong>Paso ' + (i+1) + '</strong></nav>' +
-          '<div class="rt-dots">' + dots + '</div>' +
-        '</div>' +
-        '<div class="rt-detail-body">' +
-          '<div class="rt-side"><div class="rt-big mono">' + pad(i+1) + '</div><span class="rt-tag">Etapa ' + (s.stage+1) + ' · ' + st.name + '</span><p>Paso ' + (i+1) + ' de ' + STEPS.length + ' de la ruta de prácticas.</p></div>' +
-          '<div class="rt-main"><h3 tabindex="-1" id="rtTitle">' + s.title + '</h3><p class="rt-lead">' + s.lead + '</p>' +
-            s.blocks.map(function(b){ return block(b, i); }).join('') +
-          '</div>' +
-        '</div>' +
-        '<div class="rt-detail-foot">' +
-          '<button type="button" class="rt-btn" data-act="map">← Ver toda la ruta</button>' +
-          '<div class="rt-foot-nav">' +
-            '<button type="button" class="rt-btn" data-step="' + (i-1) + '"' + (i === 0 ? ' disabled' : '') + '>Anterior</button>' +
-            (i < STEPS.length - 1
-              ? '<button type="button" class="rt-btn primary" data-step="' + (i+1) + '">Paso ' + (i+2) + ' →</button>'
-              : '<button type="button" class="rt-btn primary" data-act="game">Ponte a prueba →</button>') +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    var h = document.getElementById('rtTitle');
-    if(h){ try{ h.focus({ preventScroll:true }); }catch(e){} }
+    dialog.className = 'rt-dialog' + (dir ? ' slide-' + dir : '');
+    dialog.innerHTML =
+      '<div class="rt-dhead"><div class="rt-dtop"><div class="rt-strip">' + strip + '</div><button type="button" class="rt-x" data-act="close" aria-label="Cerrar">' + ICON_X + '</button></div>' +
+        '<div class="rt-dhead-main"><span class="rt-dicon">' + ICONS[i] + '</span><div><div class="rt-dstage">Paso ' + (i+1) + ' de ' + STEPS.length + ', etapa ' + (s.stage+1) + ': ' + STAGES[s.stage].name + '</div><h3 id="rtTitle">' + s.title + '</h3></div></div></div>' +
+      '<div class="rt-dbody"><p class="rt-lead">' + s.lead + '</p>' + s.blocks.map(function(b){ return block(b, i); }).join('') + '<div style="height:18px"></div></div>' +
+      '<div class="rt-dfoot"><button type="button" class="rt-btn ' + (isDone(i) ? 'is-done' : 'primary') + '" data-act="toggle">' + (isDone(i) ? ICON_OK + ' Paso hecho' : 'Marcar como hecho') + '</button>' +
+        '<span class="rt-keys">Usa ← → para moverte entre pasos</span>' +
+        '<div class="rt-nav"><button type="button" class="rt-btn icon" data-step="' + (i-1) + '" aria-label="Paso anterior"' + (i === 0 ? ' disabled' : '') + '>' + ICON_L + '</button>' +
+        '<button type="button" class="rt-btn icon" data-step="' + (i+1) + '" aria-label="Paso siguiente"' + (i === STEPS.length - 1 ? ' disabled' : '') + '>' + ICON_R + '</button></div></div>';
   }
-
-  function scrollToSection(){
-    var r = section.getBoundingClientRect();
-    var target = window.scrollY + mount.getBoundingClientRect().top - 110;
-    if(r.top > 0 && mount.getBoundingClientRect().top > 60 && mount.getBoundingClientRect().top < window.innerHeight * 0.4) return;
-    window.scrollTo({ top: target, behavior: reduceMotion ? 'auto' : 'smooth' });
-  }
-
-  // ---------- navegación con enlaces compartibles (#paso-N) ----------
-  function fromHash(scroll){
-    var m = /^#paso-(\d{1,2})$/.exec(location.hash);
-    if(m){
-      var n = parseInt(m[1], 10) - 1;
-      if(n >= 0 && n < STEPS.length){ showTab('route'); renderStep(n); if(scroll) scrollToSection(); return true; }
+  function openStep(i, fromEl, push){
+    if(i < 0 || i >= STEPS.length) return;
+    var wasOpen = !modal.hidden, dir = wasOpen ? (i > current ? 'next' : 'prev') : '';
+    if(!wasOpen) lastFocus = fromEl || document.activeElement;
+    renderDialog(i, dir);
+    if(!wasOpen){
+      modal.hidden = false; document.body.classList.add('rt-lock');
+      var src = fromEl && fromEl.getBoundingClientRect ? fromEl.getBoundingClientRect() : null;
+      if(src && !reduceMotion){
+        dialog.style.setProperty('--dx', (src.left + src.width/2 - window.innerWidth/2) + 'px');
+        dialog.style.setProperty('--dy', (src.top + src.height/2 - window.innerHeight/2) + 'px');
+      } else { dialog.style.setProperty('--dx', '0px'); dialog.style.setProperty('--dy', '30px'); }
+      dialog.classList.add('zoom');
     }
-    if(current !== -1){ current = -1; renderMap(); }
-    return false;
+    if(push !== false && history.replaceState){ history.replaceState(null, '', '#paso-' + (i+1)); }
+    try{ dialog.focus({ preventScroll:true }); }catch(e){}
   }
-  function go(i, origin){
-    if(history.pushState){ history.pushState(null, '', '#paso-' + (i+1)); }
-    renderStep(i, origin); scrollToSection();
+  function closeStep(){
+    if(modal.hidden) return;
+    modal.hidden = true; document.body.classList.remove('rt-lock'); current = -1;
+    if(history.replaceState){ history.replaceState(null, '', '#ruta-practicas'); }
+    var back = lastFocus && document.contains(lastFocus) ? lastFocus : map.querySelector('.rt-node');
+    if(back){ try{ back.focus({ preventScroll:true }); }catch(e){} }
   }
-  function toMap(){
-    if(history.pushState){ history.pushState(null, '', '#ruta-practicas'); }
-    var from = current; current = -1; renderMap(); scrollToSection();
-    var back = mount.querySelector('.rt-step[data-step="' + from + '"]'); if(back){ try{ back.focus({ preventScroll:true }); }catch(e){} }
+  function showToast(text){
+    toast.innerHTML = text; toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
   }
-  window.addEventListener('popstate', function(){ fromHash(true); });
-  window.addEventListener('hashchange', function(){ fromHash(true); });
+  function confetti(){
+    if(reduceMotion) return;
+    var box = document.createElement('div'); box.className = 'rt-confetti';
+    var colors = ['#F2811C','#F0B23E','#FF9A42','#0A1526','#2E9E6A'];
+    for(var k=0;k<60;k++){
+      var c = document.createElement('i');
+      c.style.left = (Math.random()*100) + '%'; c.style.background = colors[k % colors.length];
+      c.style.setProperty('--x', ((Math.random()-0.5)*260) + 'px'); c.style.setProperty('--r', (Math.random()*900 - 450) + 'deg');
+      c.style.setProperty('--d', (1.8 + Math.random()*1.4) + 's'); c.style.animationDelay = (Math.random()*0.3) + 's';
+      box.appendChild(c);
+    }
+    document.body.appendChild(box); setTimeout(function(){ box.remove(); }, 3600);
+  }
+  function toggleDone(i){
+    var stage = STEPS[i].stage, wasDone = isDone(i);
+    if(wasDone) done.splice(done.indexOf(i), 1); else done.push(i);
+    save(); refresh(); paintRoad(false);
+    if(!wasDone){
+      var stageIdx = stageSteps(stage);
+      if(done.length === STEPS.length){ confetti(); showToast('¡Completaste las <b>3 etapas</b> de la ruta!'); }
+      else if(stageIdx.every(isDone)){ confetti(); showToast('¡Terminaste la <b>etapa ' + (stage+1) + '</b>: ' + STAGES[stage].name + '!'); }
+      else showToast(ICON_OK + ' Paso ' + (i+1) + ' marcado como hecho');
+    }
+    if(!modal.hidden) renderDialog(i);
+  }
 
+  // ---------- eventos ----------
   mount.addEventListener('click', function(e){
-    var t = e.target.closest ? e.target.closest('button') : null;
-    if(!t || t.disabled) return;
-    if(t.hasAttribute('data-step')){
-      var i = parseInt(t.getAttribute('data-step'), 10);
-      var origin = null;
-      if(t.classList.contains('rt-step')){
-        var r = t.getBoundingClientRect(), m = mount.getBoundingClientRect();
-        origin = { x: Math.round(r.left - m.left + r.width/2) + 'px', y: Math.round(r.top - m.top + r.height/2) + 'px' };
-      }
-      go(i, origin); return;
-    }
-    var act = t.getAttribute('data-act');
-    if(act === 'map') toMap();
-    else if(act === 'game'){ showTab('game'); scrollToSection(); }
+    var t = e.target.closest ? e.target.closest('button') : null; if(!t) return;
+    if(t.hasAttribute('data-step')) return openStep(parseInt(t.getAttribute('data-step'), 10), t.classList.contains('rt-node') ? t.querySelector('.rt-dot') : t);
+    if(t.getAttribute('data-act') === 'reset'){ done = []; docChecks = {}; save(); refresh(); paintRoad(false); showToast('Tu avance se reinició'); }
   });
-  mount.addEventListener('change', function(e){
-    var cb = e.target;
-    if(!cb.hasAttribute || !cb.hasAttribute('data-check')) return;
-    var st = checks[current] || (checks[current] = []);
-    st[parseInt(cb.getAttribute('data-check'), 10)] = cb.checked;
-    var total = mount.querySelectorAll('[data-check]').length;
-    var c = document.getElementById('rtCheckCount');
+  modal.addEventListener('click', function(e){
+    var t = e.target.closest ? e.target.closest('[data-act],[data-step]') : null; if(!t || t.disabled) return;
+    if(t.hasAttribute('data-step')) return openStep(parseInt(t.getAttribute('data-step'), 10));
+    var act = t.getAttribute('data-act');
+    if(act === 'close') closeStep();
+    else if(act === 'toggle') toggleDone(current);
+  });
+  modal.addEventListener('change', function(e){
+    var cb = e.target; if(!cb.hasAttribute || !cb.hasAttribute('data-check')) return;
+    var st = docChecks[current] || (docChecks[current] = []);
+    st[parseInt(cb.getAttribute('data-check'), 10)] = cb.checked; save();
+    cb.parentNode.classList.toggle('on', cb.checked);
+    var total = modal.querySelectorAll('[data-check]').length, c = document.getElementById('rtCheckCount');
     if(c) c.textContent = st.filter(Boolean).length + ' de ' + total + ' documentos listos';
+  });
+  document.addEventListener('keydown', function(e){
+    if(modal.hidden) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeStep(); }
+    else if(e.key === 'ArrowRight' && current < STEPS.length - 1 && !/INPUT|TEXTAREA/.test(e.target.tagName)){ openStep(current + 1); }
+    else if(e.key === 'ArrowLeft' && current > 0 && !/INPUT|TEXTAREA/.test(e.target.tagName)){ openStep(current - 1); }
+    else if(e.key === 'Tab'){
+      var f = dialog.querySelectorAll('button:not([disabled]), a[href], input'); if(!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && (document.activeElement === first || document.activeElement === dialog)){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
   });
 
   // ---------- pestañas: explorar / ponte a prueba ----------
-  var tabRoute = document.getElementById('rtTabRoute');
-  var tabGame = document.getElementById('rtTabGame');
-  var game = document.getElementById('rpGame');
+  var tabRoute = document.getElementById('rtTabRoute'), tabGame = document.getElementById('rtTabGame'), game = document.getElementById('rpGame');
   function showTab(which){
     var isGame = which === 'game';
     tabRoute.classList.toggle('active', !isGame); tabRoute.setAttribute('aria-selected', String(!isGame));
     tabGame.classList.toggle('active', isGame); tabGame.setAttribute('aria-selected', String(isGame));
     mount.hidden = isGame; if(game) game.hidden = !isGame;
+    if(!isGame) requestAnimationFrame(drawRoad);
   }
-  tabRoute.addEventListener('click', function(){ showTab('route'); });
-  tabGame.addEventListener('click', function(){ showTab('game'); });
+  if(tabRoute && tabGame){ tabRoute.addEventListener('click', function(){ showTab('route'); }); tabGame.addEventListener('click', function(){ showTab('game'); }); }
 
-  if(!fromHash(false)) renderMap();
-  if(/^#paso-\d/.test(location.hash)){ setTimeout(function(){ scrollToSection(); }, 300); }
+  // ---------- inicio ----------
+  refresh();
+  drawRoad();
+  if('ResizeObserver' in window){ new ResizeObserver(function(){ if(!mount.hidden) drawRoad(); }).observe(map); }
+  else window.addEventListener('resize', drawRoad);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawRoad);
+  function fromHash(){
+    var m = /^#paso-(\d{1,2})$/.exec(location.hash);
+    if(m){ var n = parseInt(m[1], 10) - 1; if(n >= 0 && n < STEPS.length){ showTab('route'); setTimeout(function(){ openStep(n, map.querySelector('.rt-node[data-step="' + n + '"] .rt-dot'), false); }, 250); } }
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 })();
 </script>
 </body>
